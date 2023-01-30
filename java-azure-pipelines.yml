@@ -1,0 +1,86 @@
+# Pipeline to build, test, and deploy packages with Maven
+# Artifact Feed information must be replaced
+# Triggers assume gitflow branching strategy
+# Only snapshots are deployed to the Azure Artifacts repository
+
+trigger:
+- develop
+- user-story/*
+- release/*
+
+variables:
+- group: Maven Release Pipelines
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage:
+    displayName: Build snapshot
+    jobs:
+      - job: Feature
+        displayName: Validate feature branch
+        condition: eq(variables['build.sourceBranch'], 'refs/heads/user-story')
+        steps:
+        - task: MavenAuthenticate@0
+          inputs:
+            artifactsFeeds: 'TCCC'
+        - task: Maven@3
+          displayName: Build and deploy snapshot
+          condition: 
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'test'
+      - job: Snapshot
+        displayName: Build develop branch and publish snapshot version
+        condition: eq(variables['build.sourceBranch'], 'refs/heads/develop')
+        steps:
+        - task: MavenAuthenticate@0
+          inputs:
+            artifactsFeeds: 'TCCC'
+        - task: Maven@3
+          displayName: Build and deploy snapshot
+          condition: 
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'deploy'
+      - job: Release
+        displayName: Build master branch and publish release version
+        condition: startsWith(variables['build.sourceBranch'], 'refs/heads/release')
+        variables:
+          ADO_USER: $(USERNAME)
+          ADO_PASS: $(PASSWORD)
+        steps:
+        - task: MavenAuthenticate@0
+          inputs:
+            artifactsFeeds: 'TCCC'
+        - task: Maven@3
+          displayName: Build and package release
+          condition:
+          inputs:
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'test'
+        - task: PublishBuildArtifacts@1
+          displayName: Publish build artifact
+          inputs:
+            PathtoPublish: '$(Build.SourcesDirectory)/'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
