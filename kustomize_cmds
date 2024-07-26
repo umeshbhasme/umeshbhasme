@@ -1,0 +1,218 @@
+857  terraform init
+  858  terraform plan
+  859  terraform apply --auto-approve
+  860  clear
+  861  cd ..
+  862  git clone git@github.com:ADP-APEX/cicd-k8s-pod-self-host-runner.git
+  863  cd cicd-k8s-pod-self-host-runner/
+  864  terraform init
+  865  terraform plan
+  866  terraform apply --auto-approve
+  867  cd ..
+  868  cd statedb-terraform/statedb/
+  869  terraform apply --auto-approve
+  870  sudo kubectl version  --short
+  871  terraform --version
+  872  clear
+  873  cd ..
+  874  cd statedb-kustomize/
+  875  git clone -b feature/VDSPS-176 git@github.com:ADP-APEX/statedb.git
+  876  cd statedb/
+  877  sudo kubectl version  --short
+  878  kustomize build ~/statedbapp
+  879  sudo snap install kustomize
+  880  kustomize build ~/statedbapp
+  881  kustomize build ~/development/atos/statedb-kustomize/statedb
+  882  sudo kubectl api-resources
+  883  clear
+  884  sudo kubectl api-resources
+  885  clear
+  886  ls
+  887  cd ..
+  888  ls
+  889  cd statedb/
+  890  ls
+  891  clear
+  892  kustomize build 
+  893  clear
+  894  kustomize build 
+  895  clear
+  896  kustomize build 
+  897  sudo kubectl get pods
+  898  kustomize build | kubectl apply -f -
+  899  kustomize build | sudo kubectl apply -f -
+  900  sudo kubectl get pods
+  901  cd atos/statedb-kustomize/statedb/
+  902  sudo kubectl get pods
+  903  sudo kubectl get svc
+  904  sudo kubectl get deployments
+  905  sudo kubectl delete deployment cluster-a-dev-myapp-deployment
+  906  sudo kubectl get deployments
+  907  sudo kubectl delete deployment cluster-a-stage-myapp-deployment
+  908  sudo kubectl delete deployment cluster-a-prod-myapp-deployment
+  909  sudo kubectl get deployments
+  910  sudo kubectl get pods
+  911  sudo kubectl get svc
+  912  sudo kubectl get pods
+  913  sudo kubectl get deployments
+  914  kustomize build 
+  915  sudo kubectl get deployments
+  916  sudo kubectl get pods
+  917  kustomize build | sudo kubectl apply -f -
+  918  sudo kubectl get pods
+  919  sudo kubectl get deployments
+  920  sudo kubectl get svc
+  921  sudo kubectl delete deployment cluster-a-dev-myapp-deployment
+  922  sudo kubectl delete deployment cluster-a-stage-myapp-deployment
+  923  sudo kubectl delete deployment cluster-a-prod-myapp-deployment
+  924  sudo kubectl get deployments
+  925  sudo kubectl get pods
+  926  sudo kubectl get svc
+  927  clear
+  928  sudo kubectl get pods
+  929  clear
+  930  sudo kubectl get pods
+  931  sudo kubectl get deployments
+  932  clear
+  933  kustomize build 
+  934  kustomize build | sudo kubectl apply -f -
+  935  sudo kubectl get pods
+  936  sudo kubectl get deployments
+  937  sudo kubectl get svc
+  938  clear
+  939  sudo kubectl get deployments
+  940  sudo kubectl delete deployment cluster-a-prod-myapp-deployment
+  941  sudo kubectl delete deployment cluster-a-stage-myapp-deployment
+  942  sudo kubectl delete deployment cluster-a-dev-myapp-deployment
+  943  clear
+  944  sudo kubectl get deployments
+  945  sudo kubectl get pods
+  946  clear
+  947  sudo kubectl get pods
+  948  sudo kubectl get deployments
+  949  clear
+  950  kustomize build 
+  951  clear
+  952  kustomize build | sudo kubectl apply -f -
+  953  sudo kubectl get deployments
+  954  sudo kubectl get pods
+  955  sudo kubectl get svc
+  956  curl -i http://10.43.166.123:5000/
+  957  curl -i http://10.43.62.220:5100/
+  958  curl -i http://10.43.92.103:5100/
+  959  curl -i http://10.43.34.125:5100/
+  960  clear
+  961  sudo kubectl get svc
+  962  sudo kubectl delete service cluster-a-dev-eve-statedb
+  963  sudo kubectl delete service cluster-a-prod-eve-statedb
+  964  sudo kubectl delete service cluster-a-stage-eve-statedb
+  965  sudo kubectl get svc
+  966  sudo kubectl get pods
+  967  sudo kubectl get deployments
+  968  sudo kubectl delete deployment cluster-a-stage-myapp-deployment
+  969  sudo kubectl delete deployment cluster-a-prod-myapp-deployment
+  970  sudo kubectl delete deployment cluster-a-dev-myapp-deployment
+  971  sudo kubectl get deployments
+  972  sudo kubectl get pods
+  973  clear
+  974  kustomize build ~/development/atos/statedb-kustomize/statedb/dev/
+  975  kustomize build ~/development/atos/statedb-kustomize/statedb/staging/
+  976  kustomize build ~/development/atos/statedb-kustomize/statedb/staging | sudo kubectl apply -f -
+  977  sudo kubectl get pods
+  978  sudo kubectl get deployments
+  979  sudo kubectl get svc
+  980  curl -i http://10.43.222.97:5100/
+  981  sudo kubectl delete service stage-eve-statedb
+  982  sudo kubectl get deployments
+  983  sudo kubectl get pods
+  984  sudo kubectl delete deployment stage-myapp-deployment
+  985  sudo kubectl get deployments
+  986  sudo kubectl get pods
+  987  sudo kubectl get ingress
+  988  sudo kubectl get svc
+  989  sudo kubectl delete -f  eve-ingress.yml
+  990  cd ..
+  991  cd statedb/base/
+  992  sudo kubectl delete -f  eve-ingress.yml
+  993  sudo kubectl delete ingress cluster-a-dev-eve-ingress
+  994  sudo kubectl delete ingress example-ingress
+  995  sudo kubectl get svc
+  996  sudo kubectl delete service eve-service
+  997  sudo kubectl get deployments
+  998  sudo kubectl delete deployments myapp-deployment
+  999  sudo kubectl get deployments
+ 1000  sudo kubectl get pods
+ 1001  sudo kubectl get svc
+ 1002  sudo kubectl get ingress
+ 1003  clear
+ 1004  kustomize build ~/development/atos/statedb-kustomize/statedb/staging | sudo kubectl apply -f -
+ 1005  sudo kubectl get pods
+ 1006  sudo kubectl get deployments
+ 1007  sudo kubectl get svc
+ 1008  sudo kubectl get ingress
+ 1009  curl -i http://10.43.154.215:5000
+ 1010  curl -i http://localhost:5000
+ 1011  curl -i http://localhost
+ 1012  curl -i http://localhost/eve-statedb
+ 1013  kustomize build ~/development/atos/statedb-kustomize/statedb/staging | sudo kubectl apply -f -
+ 1014  sudo kubectl get ingress
+ 1015  curl -i http://localhost/
+ 1016  clear
+ 1017  kustomize build ~/development/atos/statedb-kustomize/statedb/dev | sudo kubectl apply -f -
+ 1018  sudo kubectl get ingress
+ 1019  sudo kubectl get deployments
+ 1020  sudo kubectl get pds
+ 1021  sudo kubectl get pods
+ 1022  sudo kubectl get svc
+ 1023  curl -i http://localhost/dev
+ 1028  sudo kubectl get deployments
+ 1029  sudo kubectl get svc
+ 1030  sudo kubectl get pods
+ 1031  kustomize build ~/development/atos/statedb-kustomize/statedb/production | sudo kubectl apply -f -
+ 1032  sudo kubectl get deployments
+ 1033  sudo kubectl get pods
+ 1034  sudo kubectl get svc
+ 1035  curl -i http://localhost/prod
+ 1036  curl -i http://localhost/
+ 1037  clear
+ 1038  sudo kubectl get svc
+ 1039  curl -i http://10.43.154.215:5000
+ 1040  curl -i http://10.43.150.14:5000
+ 1041  curl -i http://10.43.145.189:5000
+ 1045  sudo kubectl get ingress
+ 1046  sudo kubectl delete -f  eve-ingress.yml
+ 1047  sudo kubectl delete stage-eve-ingress 
+ 1048  sudo kubectl delete ingress stage-eve-ingress
+ 1049  sudo kubectl delete ingress dev-eve-ingress
+ 1050  sudo kubectl delete ingress prod-eve-ingress
+ 1051  sudo kubectl get ingress
+ 1052  sudo kubectl get svc
+ 1053  sudo kubectl delete svc stage-eve-statedb
+ 1054  sudo kubectl delete svc dev-eve-statedb
+ 1055  sudo kubectl delete svc prod-eve-statedb
+ 1056  sudo kubectl get svc
+ 1057  sudo kubectl get deployments
+ 1058  sudo kubectl delete deployments stage-statedb-deployment 
+ 1059  sudo kubectl delete deployments dev-statedb-deployment 
+ 1060  sudo kubectl delete deployments prod-statedb-deployment 
+ 1061  sudo kubectl get deployments
+ 1062  sudo kubectl get pods
+ 1063  clear
+ 1064  cd ..
+ 1065  kustomize build
+ 1066  clear
+ 1067  kustomize build | sudo kubectl apply -f -
+ 1068  sudo kubectl get deployments
+ 1069  sudo kubectl get pods
+ 1070  sudo kubectl get svc
+ 1071  sudo kubectl get ingress
+ 1072  curl -i http://10.43.36.46:5000
+ 1073  curl -i http://10.43.62.218:5000
+ 1074  curl -i http://10.43.119.113:5000
+ 1075  curl -i http://localhost/
+ 1076  curl -i http://localhost/dev
+ 1077  curl -i http://localhost/prod
+ 1078  curl -i http://localhost/stage
+ 1079  cd atos/statedb-kustomize/statedb/
+	   kustomize build | kubectl delete -f -
+ ForDevOnly: kustomize build ~/development/atos/statedb-kustomize/statedb/dev | sudo kubectl apply -f -
